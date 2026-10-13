@@ -79,7 +79,7 @@
 
 <script setup>
 import { onMounted, reactive, ref } from 'vue';
-import axios from 'axios';
+import api from '../../services/api';
 
 const loading = ref(true);
 const saving = ref(false);
@@ -103,7 +103,7 @@ const loadProfile = async () => {
 
     try {
 
-        const response = await axios.get('/api/profile');
+        const response = await axios.get('/profile');
 
         Object.assign(
             profile,
@@ -131,8 +131,8 @@ const saveProfile = async () => {
 
     try {
 
-        const response = await axios.put(
-            '/api/profile',
+        const response = await api.put(
+            '/profile',
             {
                 title: profile.title,
                 bio: profile.bio,
